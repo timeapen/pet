@@ -1,0 +1,7 @@
+security:
+  user:
+    name: santo
+    password: baby
+spring:
+  profiles:
+    active: prod    
