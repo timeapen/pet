@@ -4,4 +4,6 @@ security:
     password: baby
 spring:
   profiles:
-    active: prod    
+    active: prod 
+server:
+  port: 8090   

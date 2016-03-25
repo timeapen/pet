@@ -1,4 +1,4 @@
-package com.tim.pet.service;
+package com.tim.pet.service.impl;
 
 import javax.transaction.Transactional;
 
@@ -7,16 +7,23 @@ import org.springframework.stereotype.Service;
 
 import com.tim.pet.dao.entity.Pet;
 import com.tim.pet.dao.repo.PetRepository;
+import com.tim.pet.service.IPetService;
 
 @Service
 @Transactional
-public class PetService {
+public class PetService implements IPetService {
 	
 	@Autowired
 	private PetRepository petRepo;
-	
+
+	@Override
 	public Iterable<Pet> getAllPets() {
 		return petRepo.findAll();
+	}
+
+	@Override
+	public Pet getPet(Long id) {
+		return petRepo.findOne(id);
 	}
 
 }
