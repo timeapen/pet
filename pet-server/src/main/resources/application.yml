@@ -1,9 +1,11 @@
 security:
-  user:
-    name: santo
-    password: baby
+  basic:
+    enabled: false
+#  user:
+#    name: santo
+#    password: baby
 spring:
   profiles:
     active: prod 
 server:
-  port: 8090   
+  port: 8090

@@ -12,9 +12,9 @@
         controller: 'MainController',
         controllerAs: 'main'
       }).when('/pets', {
-        templateUrl: 'app/list/pet-list.html'/*,
+        templateUrl: 'app/list/pet-list.html',
         controller: 'PetListController',
-        controllerAs: 'petList'*/
+        controllerAs: 'petList'
       })
       .otherwise({
         redirectTo: '/'
