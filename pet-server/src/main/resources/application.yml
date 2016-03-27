@@ -1,11 +1,12 @@
 security:
-  basic:
-    enabled: false
-#  user:
-#    name: santo
-#    password: baby
+  user:
+    name: santo
+    password: baby
 spring:
   profiles:
     active: prod 
 server:
   port: 8090
+logging:
+  level:
+    org.springframework.security: DEBUG  

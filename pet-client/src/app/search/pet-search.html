@@ -1,0 +1,15 @@
+<div class="container">
+
+  <div>
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+  </div>
+
+  <h1>Pet Search</h1>
+  <form role="form" ng-submit="petSearch.search(petSearch.petId)">
+    <div class="form-group">
+      <label for="inputlg">Pet Search</label>
+      <input class="form-control input-lg" id="inputlg" type="text" ng-model="petSearch.petId">
+      <input type="submit" id="submit" value="Submit" />
+    </div>
+  </form>
+</div>

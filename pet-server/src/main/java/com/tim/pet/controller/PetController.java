@@ -1,5 +1,7 @@
 package com.tim.pet.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,12 @@ public class PetController {
 	
 	@Autowired
 	private IPetService petService;
+	
+	@RequestMapping("/user")
+	@ResponseBody
+	public Principal user(Principal user) {
+		return user;
+	}
 	
 	@RequestMapping(path="/application/name", method=RequestMethod.GET)
 	@ResponseBody
