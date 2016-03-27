@@ -16,22 +16,22 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
-import com.tim.PetServerApplication;
 import com.tim.pet.dao.entity.Pet;
+import com.tim.spring.PersistenceConfiguration;
+import com.tim.spring.TestDataSourceConfiguration;
+import com.tim.spring.TestFlywayConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class,
     TransactionalTestExecutionListener.class})
-@ActiveProfiles("test")
-@SpringApplicationConfiguration(PetServerApplication.class)
-@WebIntegrationTest
+@SpringApplicationConfiguration(classes = {TestDataSourceConfiguration.class, PersistenceConfiguration.class, TestFlywayConfiguration.class})
+@Transactional
 public class PetRepositoryIT {
 	
 	@Autowired

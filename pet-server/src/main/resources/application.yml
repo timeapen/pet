@@ -2,9 +2,6 @@ security:
   user:
     name: santo
     password: baby
-spring:
-  profiles:
-    active: prod 
 server:
   port: 8090
 logging:
