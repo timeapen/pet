@@ -43,7 +43,7 @@
       authenticate(self.credentials, function(authenticated) {
         if (authenticated) {
           $log.info("Login succeeded")
-          $location.path("/pets");
+          $location.path("/add");
           self.error = false;
           $rootScope.authenticated = true;
         } else {

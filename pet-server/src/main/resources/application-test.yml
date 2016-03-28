@@ -1,8 +1,0 @@
-spring:
-  datasource:
-    url: jdbc:h2:mem:petdb-test;DB_CLOSE_ON_EXIT=FALSE
-    username: sa
-    password:
-  jpa:
-    hibernate:
-      ddl-auto: create

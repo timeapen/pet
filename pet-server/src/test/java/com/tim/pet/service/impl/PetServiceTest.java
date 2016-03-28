@@ -26,7 +26,7 @@ public class PetServiceTest {
 	private PetRepository petRepository;
 	
 	@InjectMocks
-	private PetService fixture;
+	private PetServiceImpl fixture;
 
 	@Test
 	public void testFindAllPets() {

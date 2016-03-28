@@ -8,4 +8,6 @@ public interface IPetService {
 
 	Pet getPet(Long id);
 
+	void addPet(Pet pet);
+
 }

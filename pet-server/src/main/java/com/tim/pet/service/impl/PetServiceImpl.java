@@ -11,7 +11,7 @@ import com.tim.pet.service.IPetService;
 
 @Service
 @Transactional
-public class PetService implements IPetService {
+public class PetServiceImpl implements IPetService {
 	
 	@Autowired
 	private PetRepository petRepo;
@@ -24,6 +24,11 @@ public class PetService implements IPetService {
 	@Override
 	public Pet getPet(Long id) {
 		return petRepo.findOne(id);
+	}
+	
+	@Override
+	public void addPet(Pet pet) {
+		petRepo.save(pet);
 	}
 
 }

@@ -19,7 +19,7 @@
 
     function search(petId) {
       $log.info("Searching for pet with id: ", petId);
-      var url = "/pets" + "/" + petId;
+      var url = "/pet" + "/" + petId;
       $http.get(url)
         .then(function(response) {
           $log.info("Got pet: ", response);
