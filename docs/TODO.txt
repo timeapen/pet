@@ -1,0 +1,8 @@
+TODOS:
+
+- pull out add pet into service
+- user feed back to indicate a new pet added
+- spec tests for services
+- work on delete
+- add more users via in-memory authentication
+- add roles

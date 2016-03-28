@@ -21,7 +21,7 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController(moment, $location) {
+    function NavbarController(moment, $rootScope, $location, $http) {
       var vm = this;
 
       // "vm.creation" is avaible by directive option "bindToController: true"
@@ -30,6 +30,14 @@
       vm.isActive = function (viewLocation) {
         return viewLocation === $location.path();
       };
+
+      vm.logout = function() {
+        $http.post('/signout  ', {}).finally(function() {
+          $rootScope.authenticated = false;
+          $location.path("/");
+        });
+      };
+
     }
   }
 

@@ -22,12 +22,6 @@ public class PetController {
 	@Autowired
 	private IPetService petService;
 	
-	@RequestMapping("/user")
-	@ResponseBody
-	public Principal user(Principal user) {
-		return user;
-	}
-	
 	@RequestMapping(path="/application/name", method=RequestMethod.GET)
 	@ResponseBody
 	public String applicationName() {
