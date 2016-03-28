@@ -6,23 +6,18 @@
     .controller('PetSearchController', PetSearchController);
 
   /** @ngInject */
-  function PetSearchController($log, $http) {
+  function PetSearchController($log, $http, petSearchService) {
     var vm = this;
     vm.search = search;
+    vm.pet = undefined;
 
-    $log.info('Pets search!!!!');
-
-    $http.get("/pets")
-      .then(function(response) {
-        $log.info("Got pets: ", response);
-      });
+    $log.info('Initializing pet search controller!');
 
     function search(petId) {
-      $log.info("Searching for pet with id: ", petId);
-      var url = "/pet" + "/" + petId;
-      $http.get(url)
-        .then(function(response) {
-          $log.info("Got pet: ", response);
+      petSearchService.search(petId)
+        .then(function (pet) {
+          $log.info('Retrieved pet: ', pet);
+          vm.pet = pet;
         });
     }
 

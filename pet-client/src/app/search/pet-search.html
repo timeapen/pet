@@ -7,9 +7,26 @@
   <h1>Pet Search</h1>
   <form role="form" ng-submit="petSearch.search(petSearch.petId)">
     <div class="form-group">
-      <label for="inputlg">Pet Search</label>
-      <input class="form-control input-lg" id="inputlg" type="text" ng-model="petSearch.petId">
-      <input type="submit" id="submit" value="Submit" />
+      <input class="form-control input-lg" id="inputlg" type="text" placeholder="Please enter a pet id" ng-model="petSearch.petId"><br>
+      <input class="input-lg" type="submit" id="submit" value="Submit" />
     </div>
   </form>
+  <div class="input-lg" ng-show="petSearch.pet">
+    <h1 class="row">Result:</h1>
+    <div class="row" style="background: rgb(195, 197, 202)">
+      <span>Id:</span>
+      <span>{{petSearch.pet.id}}</span>
+    </div>
+    <div class="row" style="background: rgb(221, 223, 231)">
+      <span>Name:</span>
+      <span>{{petSearch.pet.name}}</span>
+    </div>
+    <div class="row" style="background: rgb(195, 197, 202)">
+      <span>Description:</span>
+      <span>{{petSearch.pet.description}}</span>
+    </div>
+  </div>
+  <div class="input-lg" ng-hide="petSearch.pet">
+    <h1 class="row">No Results Found</h1>
+  </div>
 </div>

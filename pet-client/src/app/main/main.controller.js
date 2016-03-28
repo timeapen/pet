@@ -44,12 +44,12 @@
         if (authenticated) {
           $log.info("Login succeeded")
           $location.path("/add");
-          self.error = false;
+          vm.error = false;
           $rootScope.authenticated = true;
         } else {
           $log.info("Login failed")
           $location.path("/");
-          self.error = true;
+          vm.error = true;
           $rootScope.authenticated = false;
         }
       })

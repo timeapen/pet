@@ -4,13 +4,10 @@
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
 
-  <div class="alert alert-danger" ng-show="error">
+  <div class="alert alert-danger" ng-show="main.error">
     There was a problem logging in. Please try again.
   </div>
   <form role="form" ng-submit="main.login()">
-    <pre>
-      {{main.credentials | json}}
-    </pre>
     <div class="form-group">
       <label for="username">Username:</label> <input type="text"
                                                      class="form-control" id="username" name="username" ng-model="main.credentials.username"/>
