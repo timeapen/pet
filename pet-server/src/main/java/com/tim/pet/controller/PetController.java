@@ -42,8 +42,8 @@ public class PetController {
 	
 	@RequestMapping(path="/pet", method=RequestMethod.POST)
 	@ResponseBody
-	public void addPet(@RequestBody AddPetRequest request) {
-		petService.addPet(createPet(request));
+	public Long addPet(@RequestBody AddPetRequest request) {
+		return petService.addPet(createPet(request));
 	}
 
 	private Pet createPet(AddPetRequest request) {

@@ -9,26 +9,23 @@
     .controller('PetAddController', PetAddController);
 
   /** @ngInject */
-  function PetAddController($log, $http) {
+  function PetAddController($log, $http, petAddService) {
+    $log.info('Initializing the PetAddController.');
+
     var vm = this;
     vm.add = add;
-
-    $log.info('Pets add!!!!');
+    vm.id = undefined;
+    vm.error = false;
 
     function add(name, description) {
-      $log.info("Adding pet with name: ", name, " and description: ", description);
-      var url = "/pet";
-      $http.post(url, {"name": name, "description": description});
+      vm.id = undefined;
+      petAddService.add(name, description)
+        .then(function(id) {
+          vm.id = id;
+        }).catch(function(error) {
+          $log.error('XHR Failed for PetAddService.add.\n' + angular.toJson(error.data, true));
+          vm.error = true;
+      });
     }
-
-    //function search(petId) {
-    //  $log.info("Searching for pet with id: ", petId);
-    //  var url = "/pet" + "/" + petId;
-    //  $http.get(url)
-    //    .then(function(response) {
-    //      $log.info("Got pet: ", response);
-    //    });
-    //}
-
   }
 })();

@@ -20,15 +20,10 @@
       var url = "/pet" + "/" + petId;
       return $http.get(url)
                   .then(getPet)
-                  .catch(searchError);
     }
 
     function getPet(response) {
       return response.data;
-    }
-
-    function searchError(error) {
-      $log.error('XHR Failed for getPet.\n' + angular.toJson(error.data, true));
     }
 
   }

@@ -27,8 +27,9 @@ public class PetServiceImpl implements IPetService {
 	}
 	
 	@Override
-	public void addPet(Pet pet) {
-		petRepo.save(pet);
+	public Long addPet(Pet pet) {
+		Pet savedPet = petRepo.save(pet);
+		return savedPet.getId();
 	}
 
 }

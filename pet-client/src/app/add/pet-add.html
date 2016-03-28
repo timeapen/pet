@@ -4,6 +4,14 @@
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
 
+  <div class="alert alert-danger" ng-show="petAdd.error">
+    There was a problem logging in. Please try again.
+  </div>
+
+  <div class="alert alert-success" ng-show="petAdd.id">
+    Added pet with id: {{petAdd.id}}
+  </div>
+
   <h1>Add Pet</h1>
   <form role="form" ng-submit="petAdd.add(petAdd.name, petAdd.description)">
     <div class="form-group">

@@ -8,13 +8,11 @@
 
     var petSearchService;
     var $httpBackend;
-    var $log;
 
     beforeEach(module('petClient'));
-    beforeEach(inject(function(_petSearchService_, _$httpBackend_, _$log_) {
+    beforeEach(inject(function(_petSearchService_, _$httpBackend_) {
       petSearchService = _petSearchService_;
       $httpBackend = _$httpBackend_;
-      $log = _$log_;
     }));
 
     it('pet search should be registered', function() {
@@ -31,7 +29,7 @@
           pet = data;
         });
       $httpBackend.flush();
-      
+
       expect(pet).toEqual({"name" : "Santo", "description" : "Baby"});
     });
 
@@ -39,10 +37,14 @@
       var petId = 1;
       $httpBackend.when('GET', '/pet/' + petId).respond(500);
 
-      petSearchService.search(petId);
+      var searchError;
+      petSearchService.search(petId)
+        .catch(function (error) {
+          searchError = true;
+        });
       $httpBackend.flush();
 
-      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+      expect(searchError).toBeTruthy();
     });
 
   });
