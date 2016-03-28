@@ -24,7 +24,6 @@
     }
 
     function getPet(response) {
-      $log.info
       return response.data;
     }
 

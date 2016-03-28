@@ -9,10 +9,7 @@
   function MainController($rootScope, $location, $http, $log, $timeout, webDevTec, toastr) {
     var vm = this;
 
-    vm.awesomeThings = [];
-    vm.classAnimation = '';
     vm.creationDate = 1458950758345;
-    vm.showToastr = showToastr;
     vm.login = login;
 
     var authenticate = function(credentials, callback) {
@@ -53,11 +50,6 @@
           $rootScope.authenticated = false;
         }
       })
-    }
-
-    function showToastr() {
-      toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-      vm.classAnimation = '';
     }
 
   }

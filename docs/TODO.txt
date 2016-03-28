@@ -4,5 +4,8 @@ TODOS:
 - user feed back to indicate a new pet added
 - spec tests for services
 - work on delete
+- put login/logout code in service
+- render login link only if user logged in
 - add more users via in-memory authentication
 - add roles
+- e2e
