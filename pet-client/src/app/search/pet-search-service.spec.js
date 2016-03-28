@@ -39,7 +39,7 @@
 
       var searchError;
       petSearchService.search(petId)
-        .catch(function (error) {
+        .catch(function () {
           searchError = true;
         });
       $httpBackend.flush();

@@ -16,7 +16,7 @@
 
     it('pet add service should be registered', function() {
       expect(petAddService).not.toBe(null);
-    })
+    });
 
     it('pet add service adds pet', function() {
       $httpBackend.when('POST', '/pet').respond(200, 1);
