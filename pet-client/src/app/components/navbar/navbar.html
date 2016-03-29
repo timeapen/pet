@@ -16,7 +16,7 @@
 
       <ul class="nav navbar-nav navbar-right acme-navbar-text">
         <li>Application was created {{ vm.relativeDate }}.</li>
-        <li><a ng-href="#" ng-click="vm.logout()">Logout</a></li>
+        <li ng-if="$root.authenticated"><a ng-href="#" ng-click="vm.logout()">Logout</a></li>
       </ul>
     </div>
   </div>

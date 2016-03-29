@@ -11,7 +11,24 @@
 
     vm.creationDate = 1458950758345;
     vm.login = login;
-    vm.credentials = {};
+    vm.credentials = undefined;
+
+    refreshLogin();
+
+    /*
+      Handles the case where the browser is manually refreshed. Move this to the navbar, so the entire app has this.
+     */
+    function refreshLogin() {
+      loginService.login(undefined, function(authenticated) {
+        if (authenticated) {
+          $log.info("Login succeeded")
+          $rootScope.authenticated = true;
+        } else {
+          $log.info("Login failed")
+          $rootScope.authenticated = false;
+        }
+      })
+    }
 
     function login() {
       loginService.login(vm.credentials, function(authenticated) {

@@ -7,7 +7,7 @@
   angular.module('petClient')
     .factory('loginService', loginService);
 
-  function loginService($rootScope, $http) {
+  function loginService($rootScope, $http, $log) {
     var service = {
       login: login
     };
@@ -17,6 +17,7 @@
     }
 
     var authenticate = function (credentials, callback) {
+      $log.info('authent with cred ', credentials);
       var headers = credentials ? {
         authorization: "Basic "
         + btoa(credentials.username + ":"
