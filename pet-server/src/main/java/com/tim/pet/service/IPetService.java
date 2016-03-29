@@ -10,4 +10,6 @@ public interface IPetService {
 
 	Long addPet(Pet pet);
 
+	void deletePet(Long id);
+
 }

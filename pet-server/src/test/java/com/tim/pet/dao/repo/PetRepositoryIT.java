@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,26 @@ public class PetRepositoryIT {
 		Pet foundPet = fixture.findOne(pet.getId());
 		assertThat(foundPet.getName(), is("Oliver"));
 		assertThat(foundPet.getDescription(), is("Domestic Shorthair"));
+	}
+	
+	@Test
+	public void testDeletePet() {
+		Iterable<Pet> pets = fixture.findAll();
+		assertFalse(pets.iterator().hasNext());
+		
+		Pet pet = buildPet("Oliver", "Domestic Shorthair");
+		
+		fixture.save(pet);
+		
+		Pet foundPet = fixture.findOne(pet.getId());
+		
+		assertNotNull(foundPet);
+		
+		fixture.delete(pet.getId());
+		
+		foundPet = fixture.findOne(pet.getId());
+		
+		Assert.assertNull(foundPet);
 	}
 
 	private Pet buildPet(String name, String description) {

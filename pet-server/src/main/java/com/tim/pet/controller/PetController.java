@@ -52,5 +52,10 @@ public class PetController {
 		pet.setDescription(request.getDescription());
 		return pet;
 	}
+	
+	@RequestMapping(path="/pet/{id}", method=RequestMethod.DELETE)
+	public void deletePet(@PathVariable Long id) {
+		petService.deletePet(id);
+	}
 
 }

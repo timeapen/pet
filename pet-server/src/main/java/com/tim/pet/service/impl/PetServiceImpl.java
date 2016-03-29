@@ -32,4 +32,9 @@ public class PetServiceImpl implements IPetService {
 		return savedPet.getId();
 	}
 
+	@Override
+	public void deletePet(Long id) {
+		petRepo.delete(id);
+	}
+
 }
