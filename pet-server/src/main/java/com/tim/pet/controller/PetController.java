@@ -1,7 +1,5 @@
 package com.tim.pet.controller;
 
-import java.security.Principal;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -54,6 +52,7 @@ public class PetController {
 	}
 	
 	@RequestMapping(path="/pet/{id}", method=RequestMethod.DELETE)
+	@ResponseBody
 	public void deletePet(@PathVariable Long id) {
 		petService.deletePet(id);
 	}

@@ -25,6 +25,10 @@
       <span>Description:</span>
       <span>{{petSearch.pet.description}}</span>
     </div>
+    <div class="row">
+      <br>
+      <button type="button" class="btn-lg btn-danger" ng-click="petSearch.deletePet(petSearch.petId)">Delete</button>
+    </div>
   </div>
   <div class="input-lg" ng-hide="petSearch.pet">
     <h1 class="row">No Results Found</h1>
