@@ -63,6 +63,16 @@ public class PetServiceTest {
 		fixture.deletePet(1L);
 		verify(petRepository, Mockito.times(1)).delete(1L);
 	}
+	
+	@Test
+	public void testAddPet() {
+		Pet pet = createPet(1L, "Blackie", "The Dog");
+		when(petRepository.save(pet)).thenReturn(pet);
+		
+		Long petId = fixture.addPet(pet);
+		
+		assertThat(petId, is(1L));
+	}
 
 	private Pet createPet(long id, String name, String description) {
 		Pet pet = new Pet();
