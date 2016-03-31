@@ -1,9 +1,13 @@
 package com.tim.pet.controller;
 
 import static com.jayway.restassured.RestAssured.basic;
-import static com.jayway.restassured.RestAssured.when;
+import static com.jayway.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertNotNull;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matcher;
@@ -18,6 +22,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.jayway.restassured.RestAssured;
+import com.jayway.restassured.http.ContentType;
 import com.tim.PetServerApplication;
 import com.tim.pet.dao.entity.Pet;
 import com.tim.pet.dao.repo.PetRepository;
@@ -55,6 +60,30 @@ public class PetControllerTest {
 			body("name", is("Blackie")).
 			body("description", is("The dog")).
 			body("id", convertToInt(pet.getId()));
+	}
+	
+	@Test
+	public void testPostPet() {
+		Map<String, Object> newPet = new HashMap<>();
+		newPet.put("name", "Rex");
+		newPet.put("description", "Husky");
+		
+		given().
+			contentType(ContentType.JSON).
+			body(newPet).
+		when().
+			post("pet").
+		then().
+			statusCode(HttpStatus.SC_OK).
+			body(notNullValue());
+	}
+	
+	@Test
+	public void testDeletePet() {
+		when().
+			delete("pet/{id}", pet.getId()).
+		then()
+			.statusCode(HttpStatus.SC_OK);
 	}
 
 	/*
