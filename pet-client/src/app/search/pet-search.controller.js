@@ -11,6 +11,7 @@
     vm.search = search;
     vm.deletePet = deletePet;
     vm.pet = undefined;
+    vm.deletePetSuccessful = false;
 
     $log.info('Initializing pet search controller!');
 
@@ -31,10 +32,19 @@
         controllerAs: 'petDelete',
         size: 'lg',
         resolve: {
-          petId: function () {
-            return petId;
+          pet: function () {
+            return vm.pet;
           }
         }
+      });
+
+      modalInstance.result.then(function (deleted) {
+        vm.deletePetSuccessful = deleted;
+        if (deleted) {
+          vm.pet = undefined;
+        }
+      }, function () {
+        vm.deletePetSuccessful = false;
       });
     }
 

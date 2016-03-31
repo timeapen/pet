@@ -1,11 +1,21 @@
 <div class="modal-header">
-  <h3 class="modal-title">I'm a modal!</h3>
+  <h3 class="modal-title">Are you sure you want to delete {{petDelete.pet.name}}?</h3>
 </div>
-<div class="modal-body">
-  <ul>
-  </ul>
+<div class="modal-body ">
+    <div>
+      <span>Id:</span>
+      <span>{{petDelete.pet.id}}</span>
+    </div>
+    <div>
+      <span>Name:</span>
+      <span>{{petDelete.pet.name}}</span>
+    </div>
+    <div>
+      <span>Description:</span>
+      <span>{{petDelete.pet.description}}</span>
+    </div>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-danger" type="button" ng-click="petDelete.deletePet(petDelete.petId)">Delete</button>
-  <button class="btn btn-warning" type="button" ng-click="petDelete.cancel()">Cancel</button>
+  <button class="btn btn-danger" type="button" ng-click="petDelete.deletePet(petDelete.pet.id)">Delete</button>
+  <button class="btn btn-info" type="button" ng-click="petDelete.cancel()">Cancel</button>
 </div>
