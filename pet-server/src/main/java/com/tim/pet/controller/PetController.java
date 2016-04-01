@@ -20,12 +20,6 @@ public class PetController {
 	@Autowired
 	private IPetService petService;
 	
-	@RequestMapping(path="/application/name", method=RequestMethod.GET)
-	@ResponseBody
-	public String applicationName() {
-		return "Tim's Pet Store!";
-	}
-	
 	@RequestMapping(path="/pet", method=RequestMethod.GET)
 	@ResponseBody
 	public Iterable<Pet> getPets() {

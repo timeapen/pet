@@ -26,7 +26,7 @@ public class AuthController {
 	
 	@RequestMapping(path="/signout", method=RequestMethod.POST)
 	@ResponseBody
-	public void logout() {
+	public void signout() {
 		LOGGER.info("Signing out");
 		SecurityContextHolder.clearContext();
 	}
