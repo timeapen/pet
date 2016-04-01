@@ -5,6 +5,4 @@ TODOS:
 - add more users via in-memory authentication
 - add roles
 - e2e
-- flesh out more rest controller tests
-	- add rest controller tests for authentication controller: given().auth().basic(username, password).when().get("/secured").then().statusCode(200);
 - ui tweaks	

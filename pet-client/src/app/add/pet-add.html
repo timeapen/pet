@@ -8,18 +8,18 @@
     There was a problem adding the pet.
   </div>
 
-  <div class="alert alert-success" ng-show="petAdd.id">
+  <div id="addSuccess" class="alert alert-success" ng-show="petAdd.id">
     Added pet with id: {{petAdd.id}}
   </div>
 
   <h1>Add Pet</h1>
   <form role="form" ng-submit="petAdd.add(petAdd.name, petAdd.description)">
     <div class="form-group">
-      <label for="petName">Pet Name</label>
-      <input class="form-control input-lg" id="petName" type="text" ng-model="petAdd.name">
-      <label for="petDescription">Pet Description</label>
-      <input class="form-control input-lg" id="petDescription" type="text" ng-model="petAdd.description"><br>
-      <input class="input-lg" type="submit" id="submit" value="Submit" />
+      <label for="name">Pet Name</label>
+      <input class="form-control input-lg" id="name" type="text" ng-model="petAdd.name">
+      <label for="description">Pet Description</label>
+      <input class="form-control input-lg" id="description" type="text" ng-model="petAdd.description"><br>
+      <input class="input-lg" type="submit" id="add" value="Add Pet" />
     </div>
   </form>
 </div>
