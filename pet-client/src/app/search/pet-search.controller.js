@@ -6,9 +6,10 @@
     .controller('PetSearchController', PetSearchController);
 
   /** @ngInject */
-  function PetSearchController($log, $http, $modal, petSearchService) {
+  function PetSearchController($log, $http, $modal, petSearchService, principalService) {
     var vm = this;
     vm.search = search;
+    vm.hasRole = hasRole;
     vm.deletePet = deletePet;
     vm.pet = undefined;
     vm.deletePetSuccessful = false;
@@ -21,6 +22,10 @@
           $log.info('Retrieved pet: ', pet);
           vm.pet = pet;
         });
+    }
+
+    function hasRole(role) {
+      return principalService.hasRole(role);
     }
 
     function deletePet(petId) {

@@ -29,7 +29,7 @@
       <span>Description:</span>
       <span>{{petSearch.pet.description}}</span>
     </div>
-    <div class="row">
+    <div ng-if="petSearch.hasRole('ROLE_ADMIN')" class="row">
       <br>
       <button type="button" class="btn-lg btn-danger" ng-click="petSearch.deletePet(petSearch.petId)">Delete</button>
     </div>

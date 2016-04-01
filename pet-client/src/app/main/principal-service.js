@@ -15,7 +15,8 @@
     var service = {
       setPrincipal: setPrincipal,
       getPrincipal: getPrincipal,
-      clearPrincipal: clearPrincipal
+      clearPrincipal: clearPrincipal,
+      hasRole: hasRole
     };
 
     function setPrincipal(principal) {
@@ -31,6 +32,16 @@
     function clearPrincipal() {
       $log.info('Clearing principal: ');
       vm.principal = undefined;
+    }
+
+    function hasRole(role) {
+      var authorities = vm.principal && vm.principal.authorities;
+      for (var i = 0; authorities && i < authorities.length; i++) {
+        if (authorities[i].authority === role) {
+          return true;
+        }
+      }
+      return false;
     }
 
     return service;
