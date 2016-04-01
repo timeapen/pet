@@ -11,11 +11,18 @@
     var vm;
     var el;
     var timeInMs;
+    var loginService;
 
     beforeEach(module('petClient'));
-    beforeEach(inject(function($compile, $rootScope) {
+    beforeEach(inject(function($compile, $rootScope,  _$httpBackend_, _loginService_) {
       // spyOn(_$window_, 'moment').and.callThrough();
       // $window = _$window_;
+
+      loginService = _loginService_;
+
+      spyOn(loginService, 'login');
+
+      _$httpBackend_.expectGET('/user').respond(200);
 
       timeInMs = new Date();
       timeInMs = timeInMs.setHours(timeInMs.getHours() - 24);
@@ -41,6 +48,11 @@
       expect(vm.relativeDate).toEqual(jasmine.any(String));
       expect(vm.relativeDate).toEqual('a day ago');
     });
+
+    it('should attempt login on controller creation', function() {
+      expect(loginService.login).toHaveBeenCalledWith(undefined, jasmine.any(Function));
+    });
+
 
     // it('should call Moment', function() {
     //   console.log($window.moment)

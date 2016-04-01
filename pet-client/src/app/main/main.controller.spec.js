@@ -12,12 +12,6 @@
       loginService = _loginService_;
     }));
 
-    it('should attempt login on controller creation', function() {
-      spyOn(loginService, 'login');
-      vm = $controller('MainController');
-      expect(loginService.login).toHaveBeenCalledWith(undefined, jasmine.any(Function));
-    });
-
     it('should login', function() {
       vm = $controller('MainController');
 
