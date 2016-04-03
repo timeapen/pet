@@ -1,12 +1,16 @@
 'use strict';
 
 describe('The main view', function () {
+  var navBar;
   var page;
   var addPage;
+  var searchPage;
 
   beforeEach(function () {
+    navBar = require('./nav.po');
     page = require('./main.po');
     addPage = require('./petadd.po');
+    searchPage = require('./petsearch.po');
   });
 
   it('should login and forward to Add Pet page', function() {
@@ -24,6 +28,12 @@ describe('The main view', function () {
     addPage.clickAdd();
 
     expect(addPage.successMessage.getText()).toMatch(/Added pet with id: \d+/);
+  });
+
+  it('should search for pet', function() {
+    navBar.goToSearchPage();
+    searchPage.enterId(3);
+    searchPage.search();
   });
 
   //it('should include jumbotron with correct data', function() {

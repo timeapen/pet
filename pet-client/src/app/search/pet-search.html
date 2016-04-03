@@ -11,8 +11,8 @@
   <h1>Pet Search</h1>
   <form role="form" ng-submit="petSearch.search(petSearch.petId)">
     <div class="form-group">
-      <input class="form-control input-lg" id="inputlg" type="text" placeholder="Please enter a pet id" ng-model="petSearch.petId"><br>
-      <input class="input-lg" type="submit" id="submit" value="Submit" />
+      <input id="searchId" class="form-control input-lg" id="inputlg" type="text" placeholder="Please enter a pet id" ng-model="petSearch.petId"><br>
+      <input id="search" class="input-lg" type="submit" id="submit" value="Submit" />
     </div>
   </form>
   <div class="input-lg" ng-show="petSearch.pet">
