@@ -8,6 +8,7 @@
 var NavBar = function() {
   var navAdd = element(by.id('navAdd'));
   var navSearch = element(by.id('navSearch'));
+  var navLogout = element(by.id('navLogout'));
 
   this.goToAddPage = function() {
     navAdd.click();
@@ -15,6 +16,10 @@ var NavBar = function() {
 
   this.goToSearchPage = function() {
     navSearch.click();
+  }
+
+  this.logout = function() {
+    navLogout.click();
   }
 
 };

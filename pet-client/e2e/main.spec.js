@@ -2,14 +2,14 @@
 
 describe('The main view', function () {
   var navBar;
-  var page;
+  var loginPage;
   var addPage;
   var searchPage;
   var deleteModal;
 
   beforeEach(function () {
     navBar = require('./nav.po');
-    page = require('./main.po');
+    loginPage = require('./main.po');
     addPage = require('./petadd.po');
     searchPage = require('./petsearch.po');
     deleteModal = require('./deleteModal.po');
@@ -17,9 +17,9 @@ describe('The main view', function () {
 
   it('should login and forward to Add Pet page', function() {
     browser.get('/index.html');
-    page.username.sendKeys('santo');
-    page.password.sendKeys('baby');
-    page.login.click();
+    loginPage.username.sendKeys('santo');
+    loginPage.password.sendKeys('baby');
+    loginPage.login.click();
 
     expect(addPage.pageHeading()).toBe('Add Pet');
   });
@@ -53,6 +53,12 @@ describe('The main view', function () {
     deleteModal.delete();
 
     expect(searchPage.deletePetAlert()).toBe('Pet has been deleted.');
+  });
+
+  it('should logout', function() {
+    navBar.logout();
+
+    expect(loginPage.login.isDisplayed()).toBeTruthy();
   });
 
   //it('should include jumbotron with correct data', function() {
