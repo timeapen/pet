@@ -12,6 +12,10 @@ var PetSearchPage = function() {
   var pageHeading = element(by.css('h1'));
   var searchId = element(by.id('searchId'));
   var search = element(by.id('search'));
+  var searchResultId = element(by.id('searchResultId'));
+  var searchResultName = element(by.id('searchResultName'));
+  var deleteButton = element(by.id('delete'));
+  var deletePetAlert = element(by.id('deletePetAlert'));
 
   this.pageHeading = function() {
     return pageHeading.getText();
@@ -23,6 +27,22 @@ var PetSearchPage = function() {
 
   this.search = function() {
     search.click();
+  }
+
+  this.searchResultName = function() {
+    return searchResultName.getText();
+  }
+
+  this.searchResultId = function() {
+    return searchResultId.getText();
+  }
+
+  this.delete = function() {
+    deleteButton.click();
+  }
+
+  this.deletePetAlert = function() {
+    return deletePetAlert.getText();
   }
 
 };

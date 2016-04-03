@@ -5,12 +5,14 @@ describe('The main view', function () {
   var page;
   var addPage;
   var searchPage;
+  var deleteModal;
 
   beforeEach(function () {
     navBar = require('./nav.po');
     page = require('./main.po');
     addPage = require('./petadd.po');
     searchPage = require('./petsearch.po');
+    deleteModal = require('./deleteModal.po');
   });
 
   it('should login and forward to Add Pet page', function() {
@@ -38,6 +40,19 @@ describe('The main view', function () {
 
     searchPage.enterId(addedPetId);
     searchPage.search();
+
+    expect(searchPage.searchResultId()).toBe(addedPetId);
+    expect(searchPage.searchResultName()).toBe('Blackie');
+  });
+
+  it('should delete pet', function() {
+    searchPage.delete();
+
+    expect(deleteModal.title()).toBe('Are you sure you want to delete Blackie?');
+
+    deleteModal.delete();
+
+    expect(searchPage.deletePetAlert()).toBe('Pet has been deleted.');
   });
 
   //it('should include jumbotron with correct data', function() {

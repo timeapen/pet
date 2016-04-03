@@ -4,7 +4,7 @@
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
 
-  <div class="alert alert-info" ng-show="petSearch.deletePetSuccessful">
+  <div id="deletePetAlert" class="alert alert-info" ng-show="petSearch.deletePetSuccessful">
     Pet has been deleted.
   </div>
 
@@ -19,11 +19,11 @@
     <h1 class="row">Result:</h1>
     <div class="row" style="background: rgb(195, 197, 202)">
       <span>Id:</span>
-      <span>{{petSearch.pet.id}}</span>
+      <span id="searchResultId">{{petSearch.pet.id}}</span>
     </div>
     <div class="row" style="background: rgb(221, 223, 231)">
       <span>Name:</span>
-      <span>{{petSearch.pet.name}}</span>
+      <span id="searchResultName">{{petSearch.pet.name}}</span>
     </div>
     <div class="row" style="background: rgb(195, 197, 202)">
       <span>Description:</span>
@@ -31,7 +31,7 @@
     </div>
     <div ng-if="petSearch.hasRole('ROLE_ADMIN')" class="row">
       <br>
-      <button type="button" class="btn-lg btn-danger" ng-click="petSearch.deletePet(petSearch.petId)">Delete</button>
+      <button id="delete" type="button" class="btn-lg btn-danger" ng-click="petSearch.deletePet(petSearch.petId)">Delete</button>
     </div>
   </div>
   <div class="input-lg" ng-hide="petSearch.pet">
