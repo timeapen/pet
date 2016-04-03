@@ -19,7 +19,7 @@ describe('The main view', function () {
     page.password.sendKeys('baby');
     page.login.click();
 
-    expect(addPage.pageHeading.getText()).toBe('Add Pet');
+    expect(addPage.pageHeading()).toBe('Add Pet');
   });
 
   it('should add pet', function() {
@@ -31,8 +31,12 @@ describe('The main view', function () {
   });
 
   it('should search for pet', function() {
+    var addedPetId = addPage.addedPetId();
+
     navBar.goToSearchPage();
-    searchPage.enterId(3);
+    expect(searchPage.pageHeading()).toBe('Pet Search');
+
+    searchPage.enterId(addedPetId);
     searchPage.search();
   });
 

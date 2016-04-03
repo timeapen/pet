@@ -9,8 +9,13 @@
 'use strict';
 
 var PetSearchPage = function() {
+  var pageHeading = element(by.css('h1'));
   var searchId = element(by.id('searchId'));
   var search = element(by.id('search'));
+
+  this.pageHeading = function() {
+    return pageHeading.getText();
+  }
 
   this.enterId = function(id) {
     searchId.sendKeys(id);

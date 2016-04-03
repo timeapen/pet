@@ -6,22 +6,32 @@
 'use strict';
 
 var PetAddPage = function() {
-  this.pageHeading = element(by.css('h1'));
-  this.name = element(by.id('name'));
-  this.description = element(by.id('description'));
-  this.add = element(by.id('add'));
+  var pageHeading = element(by.css('h1'));
+  var name = element(by.id('name'));
+  var description = element(by.id('description'));
+  var add = element(by.id('add'));
+  var addId = element(by.id('addId'));
+
   this.successMessage = element(by.id('addSuccess'));
 
-  this.enterName = function(name) {
-    this.name.sendKeys(name);
+  this.pageHeading = function() {
+    return pageHeading.getText();
   }
 
-  this.enterDescription = function(description) {
-    this.description.sendKeys(description);
+  this.enterName = function(petName) {
+    name.sendKeys(petName);
+  }
+
+  this.enterDescription = function(petDescription) {
+    description.sendKeys(petDescription);
   }
 
   this.clickAdd = function() {
-    this.add.click();
+    add.click();
+  }
+
+  this.addedPetId = function() {
+    return addId.getText();
   }
 
 };
