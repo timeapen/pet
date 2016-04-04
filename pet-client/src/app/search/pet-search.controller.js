@@ -13,14 +13,17 @@
     vm.deletePet = deletePet;
     vm.pet = undefined;
     vm.deletePetSuccessful = false;
+    vm.searchExecuted = false;
 
     $log.info('Initializing pet search controller!');
 
     function search(petId) {
+      vm.searchExecuted = false;
       petSearchService.search(petId)
         .then(function (pet) {
           $log.info('Retrieved pet: ', pet);
           vm.pet = pet;
+          vm.searchExecuted = true;
         });
     }
 
