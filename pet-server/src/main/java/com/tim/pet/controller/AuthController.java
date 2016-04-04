@@ -17,7 +17,7 @@ public class AuthController {
 	
 	public static final Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
 
-	@RequestMapping("/user")
+	@RequestMapping(path="/user", method=RequestMethod.GET)
 	@ResponseBody
 	public Principal user(Principal user) {
 		LOGGER.info("Requesting principal {}", user);
