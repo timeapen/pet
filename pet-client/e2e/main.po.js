@@ -5,14 +5,34 @@
 
 'use strict';
 
-var MainPage = function() {
-  this.jumbEl = element(by.css('.jumbotron'));
-  this.h1El = this.jumbEl.element(by.css('h1'));
-  this.imgEl = this.jumbEl.element(by.css('img'));
-  this.thumbnailEls = element(by.css('body')).all(by.repeater('awesomeThing in main.awesomeThings'));
-  this.username = element(by.id('username'));
-  this.password = element(by.id('password'));
-  this.login = element(by.id('login'));
+var LoginPage = function() {
+  var usernameField = element(by.id('username'));
+  var passwordField = element(by.id('password'));
+  var loginButton = element(by.id('login'));
+  var alert = element(by.id('loginAlert'));
+
+  this.enterUsername = function(username) {
+    usernameField.clear();
+    usernameField.sendKeys(username);
+  }
+
+  this.enterPassword = function(password) {
+    passwordField.clear();
+    passwordField.sendKeys(password);
+  }
+
+  this.login = function() {
+    loginButton.click();
+  }
+
+  this.isLoginVisible = function() {
+    return loginButton.isDisplayed();
+  }
+
+  this.loginAlert = function() {
+    return alert.getText();
+  }
+
 };
 
-module.exports = new MainPage();
+module.exports = new LoginPage();

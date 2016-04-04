@@ -15,11 +15,20 @@ describe('The main view', function () {
     deleteModal = require('./deleteModal.po');
   });
 
-  it('should login and forward to Add Pet page', function() {
+  it('should fail login', function() {
     browser.get('/index.html');
-    loginPage.username.sendKeys('santo');
-    loginPage.password.sendKeys('baby');
-    loginPage.login.click();
+
+    loginPage.enterUsername('badd');
+    loginPage.enterPassword('badder');
+    loginPage.login();
+
+    expect(loginPage.loginAlert()).toBe('There was a problem logging in. Please try again.');
+  });
+
+  it('should login and forward to Add Pet page', function() {
+    loginPage.enterUsername('santo');
+    loginPage.enterPassword('baby');
+    loginPage.login();
 
     expect(addPage.pageHeading()).toBe('Add Pet');
   });
@@ -58,7 +67,7 @@ describe('The main view', function () {
   it('should logout', function() {
     navBar.logout();
 
-    expect(loginPage.login.isDisplayed()).toBeTruthy();
+    expect(loginPage.isLoginVisible()).toBeTruthy();
   });
 
   //it('should include jumbotron with correct data', function() {
