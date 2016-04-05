@@ -12,30 +12,21 @@
       login: login
     };
 
-    function login(credentials, callback) {
-      authenticate(credentials, callback);
+    function login(credentials) {
+      return authenticate(credentials);
     }
 
-    var authenticate = function (credentials, callback) {
+    var authenticate = function (credentials) {
       var headers = credentials ? {
         authorization: "Basic "
         + btoa(credentials.username + ":"
           + credentials.password)
       } : {};
 
-      $http.get('/user', {
+      return $http.get('/user', {
         headers: headers
       }).success(function (data) {
-        if (data.name) {
-          $rootScope.authenticated = true;
-        } else {
-          $rootScope.authenticated = false;
-        }
         principalService.setPrincipal(data.principal);
-        callback && callback($rootScope.authenticated);
-      }).error(function() {
-        $rootScope.authenticated = false;
-        callback && callback(false);
       });
     }
     return service;

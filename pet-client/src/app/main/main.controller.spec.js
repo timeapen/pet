@@ -19,7 +19,7 @@
       vm.credentials = {"name" : "Sandhra", "password" : "Baby"};
       vm.login();
 
-      expect(loginService.login).toHaveBeenCalledWith({"name" : "Sandhra", "password" : "Baby"}, jasmine.any(Function));
+      expect(loginService.login).toHaveBeenCalledWith({"name" : "Sandhra", "password" : "Baby"});
     });
 
   });

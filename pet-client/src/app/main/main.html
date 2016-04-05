@@ -13,7 +13,7 @@
           <label for="username">Username:</label>
         </span>
       <span class="col-lg-4">
-        <input type="text" class="form-control" id="username" name="username" ng-model="main.credentials.username"/>
+        <input type="text" class="form-control" id="username" name="username" ng-model="main.credentials.username" required/>
       </span>
     </div>
     <div class="row form-group">
@@ -21,12 +21,12 @@
         <label for="password">Password:</label>
       </span>
       <span class="col-lg-4">
-        <input type="password" class="form-control" id="password" name="password" ng-model="main.credentials.password"/>
+        <input type="password" class="form-control" id="password" name="password" ng-model="main.credentials.password" required/>
       </span>
     </div>
     <div class="row form-group">
       <span class="col-lg-5">
-        <button type="submit" class="btn btn-primary pull-right" id="login">Login</button>
+        <button type="submit" class="btn btn-primary pull-right" id="login" ng-disabled="!main.credentialsPresent()">Login</button>
       </span>
     </div>
   </form>

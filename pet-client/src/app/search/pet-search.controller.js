@@ -46,14 +46,16 @@
         }
       });
 
-      modalInstance.result.then(function (deleted) {
-        vm.deletePetSuccessful = deleted;
-        if (deleted) {
-          vm.pet = undefined;
-        }
-      }, function () {
-        vm.deletePetSuccessful = false;
-      });
+      modalInstance.result
+        .then(function (deleted) {
+            vm.deletePetSuccessful = deleted;
+            if (deleted) {
+              vm.pet = undefined;
+              vm.searchExecuted = false;
+            }
+        }, function () {
+            vm.deletePetSuccessful = false;
+        });
     }
 
   }

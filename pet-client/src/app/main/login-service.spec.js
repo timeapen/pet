@@ -7,14 +7,14 @@
   describe('Login service', function() {
 
     var loginService;
+    var principalService;
     var $httpBackend;
-    var $rootScope;
 
     beforeEach(module('petClient'));
-    beforeEach(inject(function(_loginService_, _$httpBackend_, _$rootScope_) {
+    beforeEach(inject(function(_loginService_, _principalService_, _$httpBackend_) {
       loginService = _loginService_;
+      principalService = _principalService_;
       $httpBackend = _$httpBackend_;
-      $rootScope = _$rootScope_;
     }));
 
     it('login service should be registered', function() {
@@ -22,33 +22,28 @@
     })
 
     it('login success', function() {
-      $httpBackend.when('GET', '/user').respond(200, {"name" : "Sandhra"});
+      $httpBackend.when('GET', '/user').respond(200, {"principal" : {"name" : "Sandhra"}});
+      spyOn(principalService, 'setPrincipal');
 
       var credentials = {"name" : "Sandhra", "password" : "Baby"};
-      var authenticated = undefined;
-        loginService.login(credentials, function(success) {
-        authenticated = success;
-      });
+
+      loginService.login(credentials);
 
       $httpBackend.flush();
 
-      expect(authenticated).toBeTruthy();
-      expect($rootScope.authenticated).toBeTruthy();
+      expect(principalService.setPrincipal).toHaveBeenCalledWith({"name" : "Sandhra"});
     });
 
     it('login fail', function() {
       $httpBackend.when('GET', '/user').respond(500);
+      spyOn(principalService, 'setPrincipal');
 
       var credentials = {"name" : "Sandhra", "password" : "Baby"};
-      var authenticated = undefined;
-      loginService.login(credentials, function(success) {
-        authenticated = success;
-      });
+      loginService.login(credentials);
 
       $httpBackend.flush();
 
-      expect(authenticated).toBeFalsy();
-      expect($rootScope.authenticated).toBeFalsy();
+      expect(principalService.setPrincipal).not.toHaveBeenCalledWith({"name" : "Sandhra"});
     })
 
   });

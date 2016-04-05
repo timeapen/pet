@@ -50,7 +50,7 @@
         $http.post('/signout  ', {}).finally(function() {
           $rootScope.authenticated = false;
           principalService.clearPrincipal();
-          $location.path("/");
+          $location.path('/');
         });
       };
 
