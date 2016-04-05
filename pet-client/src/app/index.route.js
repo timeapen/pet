@@ -3,22 +3,7 @@
 
   angular
     .module('petClient')
-    .config(routeConfig)
-    .run(routeChange);
-
-  function routeChange($rootScope, $location, loginService, principalService, $log) {
-    var routeChangeCallback = $rootScope.$on("$routeChangeStart", function () {
-      if (!principalService.getPrincipal()) {
-        $log.info('Attempting to login.');
-        loginService.login().then(function() {
-          if (!principalService.getPrincipal()) {
-            $location.path('/');
-          }
-        });
-      }
-    });
-    $rootScope.$on('$destroy', routeChangeCallback)
-  }
+    .config(routeConfig);
 
   function routeConfig($routeProvider, $httpProvider) {
     $routeProvider
