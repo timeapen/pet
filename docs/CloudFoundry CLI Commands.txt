@@ -1,0 +1,1 @@
+cf push pet-server -p target\pet-server-0.0.1-SNAPSHOT.jar

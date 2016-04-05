@@ -3,7 +3,17 @@
 
   angular
     .module('petClient')
-    .config(routeConfig);
+    .config(routeConfig)
+    .run(routeChange);
+
+  function routeChange($rootScope, $location, principalService) {
+    var routeChangeCallback = $rootScope.$on("$routeChangeStart", function () {
+      if (!principalService.getPrincipal()) {
+        $location.path('/');
+      }
+    });
+    $rootScope.$on('$destroy', routeChangeCallback)
+  }
 
   function routeConfig($routeProvider, $httpProvider) {
     $routeProvider
