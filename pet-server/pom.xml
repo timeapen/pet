@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>pet-server</artifactId>
-	<packaging>jar</packaging>
+	<packaging>${packaging.type}</packaging>
 
 	<name>pet-server</name>
 	<description>Simple Pet Server</description>
@@ -18,6 +18,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+		<packaging.type>jar</packaging.type>
 	</properties>
 
 	<dependencyManagement>
@@ -158,5 +159,53 @@
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>deploy</id>
+			<properties>
+				<packaging.type>war</packaging.type>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.cloudfoundry</groupId>
+						<artifactId>cf-maven-plugin</artifactId>
+						<version>1.1.0</version>
+						<configuration>
+							<server>Bluemix</server>
+							<target>https://api.ng.bluemix.net</target>
+							<appname>pet-server</appname>
+							<org>tim.eapen@intelliware.ca</org>
+							<space>dev</space>
+							<instances>1</instances>
+							<memory>512</memory>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>push</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<failOnMissingWebXml>false</failOnMissingWebXml>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
