@@ -33,7 +33,11 @@ function browserSyncInit(baseDir, browser) {
    *
    * For more details and option, https://github.com/chimurai/http-proxy-middleware/blob/v0.9.0/README.md
    */
-   server.middleware = proxyMiddleware(['/user', '/pet', '/signout'], {target: 'http://localhost:8090', changeOrigin: true});
+
+  // Blue mix proxy settings
+  //server.middleware = proxyMiddleware(['/user', '/pet', '/signout'], {target: 'http://pet-server.mybluemix.net', changeOrigin: true});
+
+  server.middleware = proxyMiddleware(['/user', '/pet', '/signout'], {target: 'http://localhost:8090', changeOrigin: true});
 
   browserSync.instance = browserSync.init({
     startPath: '/',
