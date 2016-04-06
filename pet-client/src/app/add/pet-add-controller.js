@@ -9,7 +9,7 @@
     .controller('PetAddController', PetAddController);
 
   /** @ngInject */
-  function PetAddController($log, $http, petAddService) {
+  function PetAddController($log, petAddService) {
     $log.info('Initializing the PetAddController.');
 
     var vm = this;
