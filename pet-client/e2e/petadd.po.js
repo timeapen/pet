@@ -26,7 +26,9 @@ var PetAddPage = function() {
     description.sendKeys(petDescription);
   }
 
-  this.clickAdd = function() {
+  this.clickAddPet = function(name, description) {
+    this.enterName(name);
+    this.enterDescription(description);
     add.click();
   }
 

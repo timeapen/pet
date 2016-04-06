@@ -9,7 +9,7 @@
 'use strict';
 
 var PetSearchPage = function() {
-  var pageHeading = element(by.css('h1'));
+  var pageHeading = element.all(by.css('h1')).first();
   var searchId = element(by.id('searchId'));
   var search = element(by.id('search'));
   var searchResultId = element(by.id('searchResultId'));
@@ -25,7 +25,8 @@ var PetSearchPage = function() {
     searchId.sendKeys(id);
   }
 
-  this.search = function() {
+  this.findPetById = function(id) {
+    this.enterId(id);
     search.click();
   }
 
@@ -40,6 +41,11 @@ var PetSearchPage = function() {
   this.delete = function() {
     deleteButton.click();
   }
+
+  this.isDeleteVisible = function() {
+    return deleteButton.isPresent();
+  }
+
 
   this.deletePetAlert = function() {
     return deletePetAlert.getText();

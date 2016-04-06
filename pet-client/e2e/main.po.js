@@ -21,7 +21,9 @@ var LoginPage = function() {
     passwordField.sendKeys(password);
   }
 
-  this.login = function() {
+  this.login = function(username, password) {
+    this.enterUsername(username);
+    this.enterPassword(password);
     loginButton.click();
   }
 

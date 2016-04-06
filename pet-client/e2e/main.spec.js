@@ -1,14 +1,14 @@
 'use strict';
 
 describe('The main view', function () {
-  var navBar;
+  var menu;
   var loginPage;
   var addPage;
   var searchPage;
   var deleteModal;
 
   beforeEach(function () {
-    navBar = require('./nav.po');
+    menu = require('./nav.po');
     loginPage = require('./main.po');
     addPage = require('./petadd.po');
     searchPage = require('./petsearch.po');
@@ -18,25 +18,19 @@ describe('The main view', function () {
   it('should fail login', function() {
     browser.get('/index.html');
 
-    loginPage.enterUsername('badd');
-    loginPage.enterPassword('badder');
-    loginPage.login();
+    loginPage.login('bad', 'badder');
 
     expect(loginPage.loginAlert()).toBe('There was a problem logging in. Please try again.');
   });
 
   it('should login and forward to Add Pet page', function() {
-    loginPage.enterUsername('santo');
-    loginPage.enterPassword('baby');
-    loginPage.login();
+    loginPage.login('santo', 'baby');
 
     expect(addPage.pageHeading()).toBe('Add Pet');
   });
 
   it('should add pet', function() {
-    addPage.enterName('Blackie');
-    addPage.enterDescription('A german shepherd');
-    addPage.clickAdd();
+    addPage.clickAddPet('Blackie', 'A german shepherd');
 
     expect(addPage.successMessage.getText()).toMatch(/Added pet with id: \d+/);
   });
@@ -44,11 +38,10 @@ describe('The main view', function () {
   it('should search for pet', function() {
     var addedPetId = addPage.addedPetId();
 
-    navBar.goToSearchPage();
+    menu.goToSearchPage();
     expect(searchPage.pageHeading()).toBe('Pet Search');
 
-    searchPage.enterId(addedPetId);
-    searchPage.search();
+    searchPage.findPetById(addedPetId);
 
     expect(searchPage.searchResultId()).toBe(addedPetId);
     expect(searchPage.searchResultName()).toBe('Blackie');
@@ -56,17 +49,68 @@ describe('The main view', function () {
 
   it('should delete pet', function() {
     searchPage.delete();
-
     expect(deleteModal.title()).toBe('Are you sure you want to delete Blackie?');
 
     deleteModal.delete();
-
     expect(searchPage.deletePetAlert()).toBe('Pet has been deleted.');
   });
 
   it('should logout', function() {
-    navBar.logout();
+    menu.logout();
+    expect(loginPage.isLoginVisible()).toBeTruthy();
+  });
 
+  it('should user not be able to delete pet', function() {
+    loginPage.login('tim', 'ollie');
+    expect(addPage.pageHeading()).toBe('Add Pet');
+
+    addPage.clickAddPet('Snoopy', 'A black and white beagle');
+    expect(addPage.successMessage.getText()).toMatch(/Added pet with id: \d+/);
+
+    var addedPetId = addPage.addedPetId();
+    menu.goToSearchPage();
+    expect(searchPage.pageHeading()).toBe('Pet Search');
+
+    searchPage.findPetById(addedPetId);
+    expect(searchPage.searchResultId()).toBe(addedPetId);
+    expect(searchPage.searchResultName()).toBe('Snoopy');
+    expect(searchPage.isDeleteVisible()).toBeFalsy();
+
+    menu.logout();
+    expect(loginPage.isLoginVisible()).toBeTruthy();
+
+    loginPage.login('ninu', 'varghese');
+    expect(addPage.pageHeading()).toBe('Add Pet');
+
+    menu.goToSearchPage();
+    expect(searchPage.pageHeading()).toBe('Pet Search');
+
+    searchPage.findPetById(addedPetId);
+    expect(searchPage.searchResultId()).toBe(addedPetId);
+    expect(searchPage.searchResultName()).toBe('Snoopy');
+    expect(searchPage.isDeleteVisible()).toBeFalsy();
+
+    menu.logout();
+    expect(loginPage.isLoginVisible()).toBeTruthy();
+
+    loginPage.login('santo', 'baby');
+    expect(addPage.pageHeading()).toBe('Add Pet');
+
+    menu.goToSearchPage();
+    expect(searchPage.pageHeading()).toBe('Pet Search');
+
+    searchPage.findPetById(addedPetId);
+    expect(searchPage.searchResultId()).toBe(addedPetId);
+    expect(searchPage.searchResultName()).toBe('Snoopy');
+    expect(searchPage.isDeleteVisible()).toBeTruthy();
+
+    searchPage.delete();
+    expect(deleteModal.title()).toBe('Are you sure you want to delete Snoopy?');
+
+    deleteModal.delete();
+    expect(searchPage.deletePetAlert()).toBe('Pet has been deleted.');
+
+    menu.logout();
     expect(loginPage.isLoginVisible()).toBeTruthy();
   });
 
