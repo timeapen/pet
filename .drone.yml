@@ -4,3 +4,4 @@ pipeline:
     commands:
       - mvn clean
       - mvn install
+      - mvn deploy
