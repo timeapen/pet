@@ -1,0 +1,6 @@
+pipeline:
+  build:
+    image: 3.3.9-jdk-7
+    commands:
+      - mvn clean
+      - mvn install
