@@ -13,6 +13,8 @@ describe('The main view', function () {
     addPage = require('./petadd.po');
     searchPage = require('./petsearch.po');
     deleteModal = require('./deleteModal.po');
+
+    browser.driver.manage().window().setSize(1280, 1024);
   });
 
   it('should fail login', function() {

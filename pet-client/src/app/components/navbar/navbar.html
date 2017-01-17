@@ -8,13 +8,13 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav">
-        <li id="navAdd" ng-class="{ active: vm.isActive('/add')}"><a ng-href="#/add">Add Pet</a></li>
-        <li id="navSearch" ng-class="{ active: vm.isActive('/pets')}"><a ng-href="#/pets">Pet Search</a></li>
+        <li ng-class="{ active: vm.isActive('/add')}"><a id="navAdd" ng-href="#/add">Add Pet</a></li>
+        <li ng-class="{ active: vm.isActive('/pets')}"><a id="navSearch" ng-href="#/pets">Pet Search</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right acme-navbar-text">
         <li>Application was created {{ vm.relativeDate }}.</li>
-        <li id="navLogout" ng-if="vm.hasPrincipal()"><a ng-href="#" ng-click="vm.logout()">Logout</a></li>
+        <li ng-if="vm.hasPrincipal()"><a id="navLogout" ng-href="#" ng-click="vm.logout()">Logout</a></li>
       </ul>
     </div>
   </div>

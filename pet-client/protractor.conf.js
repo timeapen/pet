@@ -10,7 +10,13 @@ exports.config = {
 
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'phantomjs',
+
+    /*
+    * Can be used to specify the phantomjs binary path.
+    * This can generally be ommitted if you installed phantomjs globally.
+    */
+    'phantomjs.binary.path': require('phantomjs-prebuilt').path,
   },
 
   baseUrl: 'http://localhost:3000',
