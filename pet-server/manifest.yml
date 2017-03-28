@@ -2,3 +2,4 @@
 applications:
 - name: pet-server
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  path: $HOME/build/timeapen/pet/pet-server/target
