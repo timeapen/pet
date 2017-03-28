@@ -21,6 +21,6 @@ deploy:
   username: eapent
   password:
     secure: BUSs2trEioeVJn/mPcd1EMclOK2DdW0b1Xe+3ctVb09pb+Nzh/ZsrUe/CK+Bwu4kVdUJmGew1CsLYsUrqZ1R2vGqsa8+4gt74jXHLeSLznlolD9n8p0psicNou+jd2aPXjTXR8IDpRPtgIoti9RP2lepLZd3VZINunqx+HXly7toKyYqT7LGEQ/KSVMs6CPYKk/jR85xYwZTgI5rATAcbYpzPRyOn6S6CfFxeCyL7OO4IunN9VW9p1AOdUZl97AWVAkBW8fWAgNv5Qxv0F5lrE92teUKlhCSN1TZ8lNJMU7gdVRLcKluQtjgzKPTXSzpq9/+9wVMEdreGpGjnxTZ3hBvTuPebQlXKHVf3P96z2uumO7HnVPNC75SKEzl71PUENf2AJAVPigbdOluswUSiYiVAHMVed6ednE1OxJz7Lmj9PFRsSd1tD/5S6r7NEphAny53DbOOc1h+Oi3O0OeuZOS5xrskYHBzYpROQjw8guggIAJsHrvVc61iTZvBk5rr8hSQH6Sc9Q4N+4DEmgjVWiHOhmZulRCXtR8QMJT+XDylyXAgkVXoOUX3qBalhPlOmTlpnsuorN16yvcpGJz3a650dnzRaqonAmpdXHTuLN508kMEv35VTbATIn0mrKezUzn7t7bTVPKkjKd6PxoB6kca4jn0oAWFYqy+lGcu4I=
-  api: https://api.pcf-system.intware.com
+  api: --skip-ssl-validation https://api.pcf-system.intware.com
   organization: XtremeLearning
   space: travis-dev
