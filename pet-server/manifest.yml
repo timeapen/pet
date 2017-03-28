@@ -1,3 +1,4 @@
 ---
 applications:
 - name: pet-server
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
