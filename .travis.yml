@@ -19,6 +19,7 @@ script:
 - mvn test
 - cd pet-client
 - npm test
+- cd ../pet-server
 deploy:
   edge: true
   provider: cloudfoundry
