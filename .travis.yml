@@ -4,10 +4,10 @@ jdk:
 before_install:
   - npm i -g npm@3
   - npm install -g bower
-  - cd pet-client
 node_js: "6"
 install:
   - mvn install
+  - cd pet-client
   - bower install
   - npm install
 script: "npm test"
