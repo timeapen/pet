@@ -8,7 +8,6 @@ jdk:
 before_install:
 - npm i -g npm@3
 - npm install -g bower
-node_js: '6'
 install:
 - mvn install
 - cd pet-client
@@ -35,3 +34,4 @@ notifications:
       - tim@intelliware.ca
       - david@intelliware.ca
     on_success: always
+
