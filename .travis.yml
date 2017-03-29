@@ -29,3 +29,9 @@ deploy:
   api: --skip-ssl-validation https://api.pcf-system.intware.com
   organization: XtremeLearning
   space: travis-dev
+notifications:
+  email:
+    recipients:
+      - tim@intelliware.ca
+      - david@intelliware.ca
+    on_success: always
